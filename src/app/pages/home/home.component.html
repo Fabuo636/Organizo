@@ -1,0 +1,48 @@
+<div class="home-container">
+    <section class="welcome-section">
+        <div class="header-top">
+            <h1>Bonjour</h1>
+            <div class="notifications">
+                <span class="material-icons">notifications</span>
+            </div>
+        </div>
+        <p class="date">{{ currentDate | date:'EEEE d MMMM yyyy' }}</p>
+        <div class="search-bar">
+            <span class="material-icons">search</span>
+            <input type="text" placeholder="Rechercher une tâche..." [(ngModel)]="searchTerm">
+        </div>
+    </section>
+
+    <div class="content">
+        <div class="tasks-header">
+            <h2>Toutes mes tâches</h2>
+        </div>
+        <div class="tasks-container">
+            <app-swipeable-task *ngFor="let task of tasks" 
+                              (edit)="editTask(task.id)" 
+                              (delete)="deleteTask(task.id)">
+                <div class="task-item">
+                    <div class="task-left">
+                        <app-check [checked]="task.completed" (change)="toggleTask(task.id)"></app-check>
+                        <div class="task-info">
+                            <div class="task-header">
+                                <span class="category">{{ task.category }}</span>
+                                <span class="priority" [ngClass]="task.priority">{{ task.priority }}</span>
+                            </div>
+                            <h3 [ngClass]="{ 'completed': task.completed }">{{ task.title }}</h3>
+                            <div class="task-details">
+                                <span class="material-icons">calendar_today</span>
+                                <span>{{ task.date }}</span>
+                                <span class="material-icons">schedule</span>
+                                <span>{{ task.time }}</span>
+                                <span class="status" [ngClass]="{ 'completed': task.completed }">
+                                    {{ task.status }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </app-swipeable-task>
+        </div>
+    </div>
+</div>

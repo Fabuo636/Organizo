@@ -1,0 +1,194 @@
+@use "sass:color";
+
+$primary-color: #007bff;
+$text-color: #333;
+$border-color: #e0e0e0;
+$hover-color: #f5f5f5;
+
+.calendar-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0 0 15px;
+    color: $text-color;
+  }
+}
+
+.search-bar {
+  position: relative;
+  margin-bottom: 20px;
+
+  .search-input {
+    width: 100%;
+    padding: 8px 35px 8px 15px;
+    border: 1px solid $border-color;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 20px;
+  }
+}
+
+.month-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  .month-year {
+    font-size: 1.1em;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .nav-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: $text-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    .material-icons {
+      font-size: 24px;
+    }
+  }
+}
+
+.calendar-grid {
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 10px;
+
+    .weekday {
+      font-weight: 500;
+      color: $text-color;
+      font-size: 0.9em;
+      padding: 5px;
+    }
+  }
+
+  .days {
+    .week {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+
+    .day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 0.9em;
+      transition: all 0.2s;
+
+      &:not(.empty):hover {
+        background-color: $hover-color;
+      }
+
+      &.selected {
+        background-color: $primary-color;
+        color: white;
+
+        &:hover {
+          background-color: color.adjust($primary-color, $lightness: -10%);
+        }
+      }
+
+      &.empty {
+        cursor: default;
+      }
+    }
+  }
+}
+
+.selected-date {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: $hover-color;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1em;
+
+  .weekday-name {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    text-transform: capitalize;
+  }
+}
+
+.task-summary {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+
+  .date-header {
+    margin-bottom: 15px;
+
+    .selected-date {
+      font-size: 1.2em;
+      font-weight: 500;
+      color: $text-color;
+    }
+
+    .weekday-name {
+      font-size: 0.9em;
+      color: #666;
+      text-transform: lowercase;
+      margin-top: 2px;
+    }
+  }
+
+  .task-icon {
+    margin: 15px 0;
+    
+    .material-icons {
+      font-size: 48px;
+      color: #ccc;
+    }
+  }
+
+  .no-tasks-message {
+    color: #666;
+    font-size: 0.95em;
+  }
+}

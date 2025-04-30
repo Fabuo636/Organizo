@@ -1,0 +1,66 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <h2>Calendrier</h2>
+    <div class="search-bar">
+      <input 
+        type="text" 
+        [(ngModel)]="searchText" 
+        placeholder="Rechercher..."
+        class="search-input"
+      >
+      <i class="material-icons search-icon">search</i>
+    </div>
+  </div>
+
+  <div class="calendar">
+    <div class="month-navigation">
+      <button (click)="previousMonth()" class="nav-button">
+        <i class="material-icons">chevron_left</i>
+      </button>
+      <span class="month-year">{{ getMonthName() }}</span>
+      <button (click)="nextMonth()" class="nav-button">
+        <i class="material-icons">chevron_right</i>
+      </button>
+    </div>
+
+    <div class="calendar-grid">
+      <div class="weekdays">
+        <div class="weekday" *ngFor="let day of weekDays">{{ day }}</div>
+      </div>
+
+      <div class="days">
+        <div 
+          *ngFor="let week of calendar" 
+          class="week"
+        >
+          <div 
+            *ngFor="let day of week" 
+            class="day"
+            [class.empty]="day === null"
+            [class.selected]="isSelectedDate(day)"
+            (click)="selectDate(day)"
+          >
+            {{ day }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task-summary" *ngIf="selectedDate">
+    <div class="date-header">
+      <div class="selected-date">
+        {{ selectedDate | date:'yyyy-MM-dd' }}
+      </div>
+      <div class="weekday-name">
+        {{ selectedDate | date:'EEEE' | lowercase }}
+      </div>
+    </div>
+    <div class="task-icon">
+      <i class="material-icons">event_note</i>
+    </div>
+    <div class="no-tasks-message">
+      Aucune tâche pour cette date
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="index-container">
+  <div class="background-dots">
+    <div *ngFor="let dot of dots" 
+         class="dot"
+         [style.top]="dot.top"
+         [style.left]="dot.left"
+         [style.width]="dot.size"
+         [style.height]="dot.size"
+         [style.background-color]="dot.color"
+         [@floatingDots]="dot.state">
+    </div>
+  </div>
+  
+  <div class="content" @fadeInUp>
+    <div class="logo">
+      <span class="check">✓</span>rganizo
+    </div>
+    <p class="tagline">Easily manage your everythings</p>
+  </div>
+</div>

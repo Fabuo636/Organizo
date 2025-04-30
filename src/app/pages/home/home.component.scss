@@ -1,0 +1,196 @@
+$primary-color: #007bff;
+$text-color: #333;
+$light-gray: #f8f9fa;
+$border-color: #e0e0e0;
+
+.home-container {
+    height: 100vh;
+    background-color: $light-gray;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.welcome-section {
+    background-color: $light-gray;
+    padding: 1.5rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+
+        h1 {
+            font-size: 1.5rem;
+            color: $text-color;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .notifications {
+            .material-icons {
+                font-size: 1.5rem;
+                color: $text-color;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .date {
+        color: #666;
+        font-size: 0.9rem;
+        margin: 0;
+        line-height: 1;
+        margin-top: 0.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .search-bar {
+        background: white;
+        border-radius: 8px;
+        padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+        .material-icons {
+            color: #999;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 0.9rem;
+            color: $text-color;
+
+            &::placeholder {
+                color: #999;
+            }
+        }
+    }
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    background-color: white;
+    padding-bottom: 50px;
+
+    .tasks-header {
+        padding: 1.2rem 1.5rem;
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+        h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: $text-color;
+            font-weight: 600;
+        }
+    }
+
+    .tasks-container {
+        .task-item {
+            background: white;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 0.5rem;
+
+            .task-left {
+                display: flex;
+                align-items: flex-start;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .task-info {
+                flex: 1;
+
+                .task-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 0.5rem;
+
+                    .category {
+                        font-size: 0.75rem;
+                        color: #666;
+                        background-color: #f0f0f0;
+                        padding: 0.2rem 0.5rem;
+                        border-radius: 12px;
+                    }
+
+                    .priority {
+                        font-size: 0.75rem;
+                        padding: 0.2rem 0.5rem;
+                        border-radius: 12px;
+                        text-transform: capitalize;
+
+                        &.forte {
+                            background-color: #ffebee;
+                            color: #f44336;
+                        }
+
+                        &.moyenne {
+                            background-color: #e8f5e9;
+                            color: #4caf50;
+                        }
+
+                        &.faible {
+                            background-color: #e3f2fd;
+                            color: #2196f3;
+                        }
+                    }
+                }
+
+                h3 {
+                    margin: 0;
+                    font-size: 1.1rem;
+                    color: #333;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    transition: all 0.2s ease;
+
+                    &.completed {
+                        color: #bbb;
+                        font-weight: 400;
+                    }
+                }
+
+                .task-details {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: #666;
+                    font-size: 0.85rem;
+
+                    .material-icons {
+                        font-size: 1rem;
+                        color: #999;
+                    }
+
+                    .status {
+                        margin-left: auto;
+                        text-transform: capitalize;
+                        color: #999;
+
+                        &.completed {
+                            color: #4caf50;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
